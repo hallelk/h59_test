@@ -7,11 +7,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style>
             
-            .breakB4 {
-                /* page-break-before: always; */
-            }
             #printContainer {
-                height: 1700px;
+                height: 1480px;
                 
                 position: relative;
             }
@@ -33,6 +30,7 @@
                 margin: 12px auto;
                 background-repeat: no-repeat;
                 background-color: white;
+                height:11vw;
             }
 
             .item {
@@ -70,7 +68,9 @@
             td>div, .mediabox {
                 border: 1px solid #bebebe;
                 width: 100px;
-                height: 100px;                
+                height: 100px;    
+                max-width: 16vw;
+                max-height: 16vw;            
             }
 
             body {
@@ -97,6 +97,7 @@
                 line-height: 100px;
                 color: #bebebe;
                 user-select: none;
+                width:100%;
             }
             button {
                 margin: 0 auto;
@@ -114,7 +115,7 @@
 
             td {
                 text-align: center;
-                padding: 5px;
+                padding: 0px 2px;
             }
 
             th {
@@ -218,11 +219,11 @@
                                 <td>3</td>
                                 <td>4</td>
                                 <td>5</td>
-                                <td>6</td>
+                                <!-- <td>6</td>
                                 <td>7</td>
                                 <td>8</td>
                                 <td>9</td>
-                                <td>10</td>
+                                <td>10</td> -->
                                 <td></td>
                             </tr>
                             <tr>
@@ -232,11 +233,11 @@
                                 <td><input type="radio" id="radStatus3" name="radStatus"></td>
                                 <td><input type="radio" id="radStatus4" name="radStatus"></td>
                                 <td><input type="radio" id="radStatus5" name="radStatus"></td>
-                                <td><input type="radio" id="radStatus6" name="radStatus"></td>
+                                <!-- <td><input type="radio" id="radStatus6" name="radStatus"></td>
                                 <td><input type="radio" id="radStatus7" name="radStatus"></td>
                                 <td><input type="radio" id="radStatus8" name="radStatus"></td>
                                 <td><input type="radio" id="radStatus9" name="radStatus"></td>
-                                <td><input type="radio" id="radStatus10" name="radStatus"></td>
+                                <td><input type="radio" id="radStatus10" name="radStatus"></td> -->
                                 <td><span>Abgeschlossen</span></td>
                             </tr>
                         </table>
