@@ -7,6 +7,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style>
             
+            #generatingPdfOverlay {
+                top: 0;
+                left: 0;
+                height:100%;
+                width: 100%;
+                background-color: #ff0000aa;
+                position: fixed;
+                font-size: 30px;
+                text-align: center;
+                padding-top: 200px;
+                z-index: 10;
+                display:none;
+            }
+
             #printContainer {
                 /* height: 1480px; */
                 
@@ -74,6 +88,7 @@
             }
 
             body {
+                position:relative;
                 background-color:#bebebe;
                 width: 98vw;
                 /* position:relative; */
@@ -129,14 +144,28 @@
         <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.min.js"></script>
 		<script>
             function generateClicked() {
+                setOverlay();
                 window.scrollTo(0, 0);
                 setTimeout(() => {
                     generatePDF();
+                    removeOverlay();
                 }, 300);
             }
 
+            function setOverlay() {
+                var overlay = document.getElementById("generatingPdfOverlay");
+                overlay.style.display = "block";
+                console.log(overlay);
+                
+            }
+
+            function removeOverlay() {
+                var overlay = document.getElementById("generatingPdfOverlay");
+                overlay.style.display = "none";
+                
+            }
+
 			function generatePDF() {
-                console.log('ddd');
 				// Choose the element that our invoice is rendered in.
 				const element = document.getElementById('printContainer');
                 element.style.height = "2000px";
@@ -147,11 +176,14 @@
                     pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
                 };
 				// Choose the element and save the PDF for our user.
-				var worker = html2pdf().set(opt).from(element).save().then((x) => {element.style.height = "1700px";});
+				var worker = html2pdf().set(opt).from(element).save().then((x) => {
+                    element.style.removeProperty("height");
+                    document.getElementById("form").reset();
+
+                });
 			}
 
             function handleImage(e) {
-                console.log('image');
                 var canvas = e.nextSibling.nextSibling;
                 var ctx = canvas.getContext('2d');
         
@@ -366,6 +398,8 @@
                 <button onclick="generateClicked()">Download as PDF</button>
             </div>
         </div>
-        
+        <div id="generatingPdfOverlay">
+            Generating PDF
+        </div>
     </body>
 </html>
